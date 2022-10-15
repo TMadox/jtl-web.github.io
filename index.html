@@ -56,15 +56,8 @@
       measurementId: "G-7EEYPDSSCY"
     };
     firebase.initializeApp(firebaseConfig);
-    if ("serviceWorker" in navigator) {
-      window.addEventListener("load", function () {
-        // navigator.serviceWorker.register("/flutter_service_worker.js");
-        navigator.serviceWorker.register("/firebase-messaging-sw.js");
-      });
-    }
     window.addEventListener('load', function (ev) {
       // Download main.dart.js
-      navigator.serviceWorker.register("/firebase-messaging-sw.js");
       _flutter.loader.loadEntrypoint({
         serviceWorker: {
           serviceWorkerVersion: serviceWorkerVersion,
@@ -75,6 +68,11 @@
         return appRunner.runApp();
       });
     });
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", function () {
+        navigator.serviceWorker.register("/firebase-messaging-sw.js");
+      });
+    }
   </script>
 </body>
 
