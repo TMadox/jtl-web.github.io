@@ -35,7 +35,7 @@
 
   <script>
     // The value below is injected by flutter build, do not touch.
-    var serviceWorkerVersion = '3341881540';
+    var serviceWorkerVersion = '3275256179';
   </script>
   <!-- This script adds the flutter initialization JS code -->
   <script src="flutter.js" defer></script>
@@ -56,8 +56,15 @@
       measurementId: "G-7EEYPDSSCY"
     };
     firebase.initializeApp(firebaseConfig);
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", function () {
+        // navigator.serviceWorker.register("/flutter_service_worker.js");
+        navigator.serviceWorker.register("/firebase-messaging-sw.js");
+      });
+    }
     window.addEventListener('load', function (ev) {
       // Download main.dart.js
+      navigator.serviceWorker.register("/firebase-messaging-sw.js");
       _flutter.loader.loadEntrypoint({
         serviceWorker: {
           serviceWorkerVersion: serviceWorkerVersion,
@@ -69,14 +76,6 @@
       });
     });
   </script>
-  <script>
-    if ("serviceWorker" in navigator) {
-      window.addEventListener("load", function () {
-        // navigator.serviceWorker.register("/flutter_service_worker.js");
-        navigator.serviceWorker.register("/firebase-messaging-sw.js");
-      });
-    }
-    </script>
 </body>
 
 </html>
