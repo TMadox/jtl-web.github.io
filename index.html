@@ -35,7 +35,7 @@
 
   <script>
     // The value below is injected by flutter build, do not touch.
-    var serviceWorkerVersion = '1061537777';
+    var serviceWorkerVersion = '2179054975';
   </script>
   <!-- This script adds the flutter initialization JS code -->
   <script src="flutter.js" defer></script>
@@ -58,7 +58,7 @@
     firebase.initializeApp(firebaseConfig);
     window.addEventListener('load', function (ev) {
       // Download main.dart.js
-      navigator.serviceWorker.register("firebase-messaging-sw.js");
+      navigator.serviceWorker.register("../firebase-messaging-sw.js");
       _flutter.loader.loadEntrypoint({
         serviceWorker: {
           serviceWorkerVersion: serviceWorkerVersion,
